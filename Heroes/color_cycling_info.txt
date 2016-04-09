@@ -1,0 +1,5 @@
+The color cycling is an in-game feature. Simply put, if you place color 214, it will be put in a cycle automatically: 214-215-216-217-214-... etc. If you start from color 215, it will go in the game like 215-216-217-214-215-... etc. This is how Heroes 2 are programmed to cycle specific color indexes.
+
+The same cycling order goes for other color ranges I mentioned (by 4 colors), but there is one additional range which don't follow that rule. It is the ocean/river/lake colors (231-237). I won't talk about it in this message because I'm in a hurry and this range is more tricky, but you can surely save this question for future if you will need to work with oceans/rivers/lakes.
+
+231-232-233-234-235

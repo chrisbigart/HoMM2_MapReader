@@ -39,6 +39,7 @@ class game_t
 		void _draw_terrain_level2(bool over);
 		void _draw_town_screen();
 		void _draw_battle_screen();
+		void _cycle_colors();
 		void _visit_object(int pos);
 		void _set_status(std::string status);
 		

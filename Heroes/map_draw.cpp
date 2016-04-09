@@ -74,6 +74,7 @@ void game_t::_draw_map_objects()
 			_h2_objects[h2id].set_scale(_map_scale, _map_scale);
 			_h2_objects[h2id].draw(_gc, _xoff + obj.map_x * _tile_size,
 								   _yoff + obj.map_y * _tile_size);
+
 			}
 		
 		/*
@@ -284,6 +285,8 @@ void game_t::_draw_terrain()
 		//return;
 		}
 
+	_cycle_colors();
+
 	for(int i = 0; i < (int)_map.index.size(); i++)
 		{
 		
@@ -387,4 +390,33 @@ void game_t::_draw_terrain()
 			}
 		text.draw_text(_gc, obj.x * _tile_size, obj.y * _tile_size, s);
 		}*/
+	}
+
+
+void game_t::_cycle_colors()
+	{
+	CL_PixelBuffer pbuf = _gc.get_pixeldata();
+	const void* pixels = pbuf.get_data();
+	CL_TextureFormat fmt = pbuf.get_format();
+	CL_Rect rect(CL_Point(0, 0), CL_Size(1, 1));
+	for(int y = 0; y < _gc.get_height(); y++)
+		{
+		for(int x = 0; x < _gc.get_width(); x++)
+			{
+			//CL_Color c = pbuf.get_pixel(x, y);
+			uint32_t c = ((uint32_t*)pixels)[y * _gc.get_width() + x];
+			//#color shifting : FC580C, DC3404, C01400, A40000
+			//cl_abgr8
+			if(c == 0xFFb44000)//0xFF0C58FC)
+			//if(c == 0xFC580CFF)
+				{
+				//std::cout << "hit";
+				//_gc.draw_pixels(x, y, pbuf, CL_Rect)
+				uint32_t new_color = 0xFFBC540C;
+				((uint32_t*)pixels)[y * _gc.get_width() + x] = new_color;
+				//CL_PixelBuffer ncpbuf(1, 1, fmt, &new_color);
+				//_gc.draw_pixels(x, y, ncpbuf, rect);
+				}
+			}
+		}
 	}
