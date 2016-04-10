@@ -1,0 +1,2 @@
+mogrify -alpha on -channel rgba -fill "rgba(1.0,1.0,1.0,0)" -opaque "#00ffffff" -fill "rgba(0,0,0,0.5)" -opaque "#ff00ffff" -fill "rgba(0,0,0,0.4)" -opaque "#ff32ffff" -fill "rgba(0,0,0,0.3)" -opaque "#ff64ffff" -fill "rgba(0,0,0,0.2)" -opaque "#ff96ffff" *.png
+ImageResizer.exe //load *.png //resize auto "XBRz 4x" //save *.png
